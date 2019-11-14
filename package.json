@@ -1,0 +1,22 @@
+{
+  "name": "toyrobot",
+  "version": "1.0.0",
+  "description": "This is a Toy Robot Challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && tsnd --respawn dist/index.js",
+    "build": "tsc",
+    "test": "npm test",
+    "serve": "node dist/index.js"
+  },
+  "author": "Paul Hartono",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
