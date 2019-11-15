@@ -33,9 +33,10 @@ try {
   var robot: Robot = { name: 'ROBOT-X' } as Robot
 
   let service: RobotService = new RobotService(rules, robot)
-
   service.place({x: 1, y:1} as Coordinate, Direction.NORTH)
-  
+  service.move()
+  service.left()
+  service.move()
   console.log(service.report())
 } catch (e) {
   console.error(e)

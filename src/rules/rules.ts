@@ -11,7 +11,6 @@ export class Rules {
   }
 
   isRobotOnTable(robot: Robot): boolean {
-
     return (
       !!robot.coordinate && 
       robot.coordinate.x >= 0 &&
@@ -19,6 +18,10 @@ export class Rules {
       robot.coordinate.x < this.table.sizeX && 
       robot.coordinate.y < this.table.sizeY
     )
+  }
+
+  isRobotOnPlay(robot: Robot): boolean {
+    return (!!robot.direction && this.isRobotOnTable(robot))
   }
 
   isValidCoordinate(c: Coordinate): boolean {

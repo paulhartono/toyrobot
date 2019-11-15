@@ -26,12 +26,79 @@ export class RobotService {
     return true
   }
 
-  move() {
+  _moveNorth() {
+    if (this.robot.coordinate) {
+      let nextCoordinate: Coordinate = { 
+        x: this.robot.coordinate.x,
+        y: this.robot.coordinate.y + 1
+      }
 
+      if (this.rules.isValidCoordinate(nextCoordinate))
+        this.robot.coordinate = nextCoordinate
+    }
   }
 
-  rotate() {
+  _moveEast() {
+    if (this.robot.coordinate) {
+      let nextCoordinate: Coordinate = { 
+        x: this.robot.coordinate.x + 1,
+        y: this.robot.coordinate.y
+      }
 
+      if (this.rules.isValidCoordinate(nextCoordinate))
+        this.robot.coordinate = nextCoordinate
+    }
+  }
+
+  _moveSouth() {
+    if (this.robot.coordinate) {
+      let nextCoordinate: Coordinate = { 
+        x: this.robot.coordinate.x,
+        y: this.robot.coordinate.y - 1
+      }
+
+      if (this.rules.isValidCoordinate(nextCoordinate))
+        this.robot.coordinate = nextCoordinate
+    }
+  }
+
+  _moveWest() {
+    if (this.robot.coordinate) {
+      let nextCoordinate: Coordinate = { 
+        x: this.robot.coordinate.x - 1,
+        y: this.robot.coordinate.y
+      }
+
+      if (this.rules.isValidCoordinate(nextCoordinate))
+        this.robot.coordinate = nextCoordinate
+    }
+  }
+
+  move() {
+    if (this.rules.isRobotOnPlay(this.robot)) {
+      if (this.robot.direction === Direction.NORTH) this._moveNorth()
+      else if (this.robot.direction === Direction.EAST) this._moveEast()
+      else if (this.robot.direction === Direction.SOUTH) this._moveSouth()
+      else if (this.robot.direction === Direction.WEST) this._moveWest()
+    } 
+  }
+
+  left() {
+    if (this.rules.isRobotOnPlay(this.robot)) {
+      if (this.robot.direction === Direction.NORTH) this.robot.direction = Direction.WEST
+      else if (this.robot.direction === Direction.EAST) this.robot.direction = Direction.NORTH
+      else if (this.robot.direction === Direction.SOUTH) this.robot.direction = Direction.EAST
+      else if (this.robot.direction === Direction.WEST) this.robot.direction = Direction.SOUTH
+    } 
+  }
+
+  right() {
+    if (this.rules.isRobotOnPlay(this.robot)) {
+      if (this.robot.direction === Direction.NORTH) this.robot.direction = Direction.EAST
+      else if (this.robot.direction === Direction.EAST) this.robot.direction = Direction.SOUTH
+      else if (this.robot.direction === Direction.SOUTH) this.robot.direction = Direction.WEST
+      else if (this.robot.direction === Direction.WEST) this.robot.direction = Direction.NORTH
+    } 
   }
 
   report(): string {
