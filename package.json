@@ -4,7 +4,7 @@
   "description": "This is a Toy Robot Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && tsnd --respawn dist/index.js",
+    "start": "tsnd --respawn src/index.ts",
     "build": "tsc",
     "test": "npm test",
     "serve": "node dist/index.js"
