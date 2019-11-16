@@ -3,6 +3,16 @@ import RobotService, { Robot } from './robot';
 import Table from './table';
 import Rules, { Direction } from './rules';
 import Coordinate from './coordinate';
+// import * as readline from 'readline'
+
+// const i = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// })
+// i.question(`What's your name?`, (name) => {
+//   console.log(`Hi ${name}!`)
+//   readline.close()
+// })
 
 console.info('----------------------------------------------------------------')
 console.info('--                       toyrobot                             --')
@@ -30,6 +40,8 @@ try {
   const rules: Rules = new Rules(table)
   console.log('  - DONE')
 
+ 
+  
   var robot: Robot = { name: 'ROBOT-X' } as Robot
 
   let service: RobotService = new RobotService(rules, robot)

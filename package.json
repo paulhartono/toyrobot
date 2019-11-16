@@ -6,13 +6,17 @@
   "scripts": {
     "start": "tsnd --respawn src/index.ts",
     "build": "tsc",
-    "test": "npm test",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "serve": "node dist/index.js"
   },
   "author": "Paul Hartono",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^24.0.23",
     "@types/node": "^12.12.7",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"
   },

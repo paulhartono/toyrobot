@@ -12,10 +12,6 @@ export class RobotService {
     this.robot = robot
   }
 
-  greet() {
-    console.log(`${this.robot.name} says HELLOOOOO!!!`)
-  }
-
   place(c: Coordinate, direction: Direction): boolean {
     if (!this.rules.isValidCoordinate(c)) {
       return false
@@ -79,7 +75,7 @@ export class RobotService {
       if (this.robot.direction === Direction.NORTH) this._moveNorth()
       else if (this.robot.direction === Direction.EAST) this._moveEast()
       else if (this.robot.direction === Direction.SOUTH) this._moveSouth()
-      else if (this.robot.direction === Direction.WEST) this._moveWest()
+      else this._moveWest()
     } 
   }
 
@@ -88,7 +84,7 @@ export class RobotService {
       if (this.robot.direction === Direction.NORTH) this.robot.direction = Direction.WEST
       else if (this.robot.direction === Direction.EAST) this.robot.direction = Direction.NORTH
       else if (this.robot.direction === Direction.SOUTH) this.robot.direction = Direction.EAST
-      else if (this.robot.direction === Direction.WEST) this.robot.direction = Direction.SOUTH
+      else this.robot.direction = Direction.SOUTH
     } 
   }
 
@@ -97,7 +93,7 @@ export class RobotService {
       if (this.robot.direction === Direction.NORTH) this.robot.direction = Direction.EAST
       else if (this.robot.direction === Direction.EAST) this.robot.direction = Direction.SOUTH
       else if (this.robot.direction === Direction.SOUTH) this.robot.direction = Direction.WEST
-      else if (this.robot.direction === Direction.WEST) this.robot.direction = Direction.NORTH
+      else this.robot.direction = Direction.NORTH
     } 
   }
 
