@@ -4,8 +4,8 @@ import Coordinate from "../coordinate";
 
 export class RobotService {
   
-  rules: Rules = {} as Rules
-  robot: Robot = {} as Robot
+  public rules: Rules = {} as Rules
+  public robot: Robot = {} as Robot
 
   constructor(rules: Rules, robot: Robot) {
     this.rules = rules
@@ -70,7 +70,7 @@ export class RobotService {
     }
   }
 
-  move() {
+  move(): void {
     if (this.rules.isRobotOnPlay(this.robot)) {
       if (this.robot.direction === Direction.NORTH) this._moveNorth()
       else if (this.robot.direction === Direction.EAST) this._moveEast()
@@ -79,7 +79,7 @@ export class RobotService {
     } 
   }
 
-  left() {
+  turnLeft(): void {
     if (this.rules.isRobotOnPlay(this.robot)) {
       if (this.robot.direction === Direction.NORTH) this.robot.direction = Direction.WEST
       else if (this.robot.direction === Direction.EAST) this.robot.direction = Direction.NORTH
@@ -88,7 +88,7 @@ export class RobotService {
     } 
   }
 
-  right() {
+  turnRight(): void {
     if (this.rules.isRobotOnPlay(this.robot)) {
       if (this.robot.direction === Direction.NORTH) this.robot.direction = Direction.EAST
       else if (this.robot.direction === Direction.EAST) this.robot.direction = Direction.SOUTH

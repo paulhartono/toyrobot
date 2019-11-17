@@ -161,7 +161,7 @@ describe('Robot Service', () => {
   describe('Command: LEFT', () => {
     test('should ignore move when robot not on table (play)' , () => {
       robot.coordinate = undefined
-      service.left()
+      service.turnLeft()
       expect(robot.coordinate).toBeUndefined()    
       if (robot.direction)
         expect(robot.direction).toBe(robot.direction)    
@@ -172,7 +172,7 @@ describe('Robot Service', () => {
     test('robot should face WEST after command if robot was facing NORTH before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.NORTH
-      service.left()
+      service.turnLeft()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.WEST)
     })
@@ -180,7 +180,7 @@ describe('Robot Service', () => {
     test('robot should face NORTH after command if robot was facing EAST before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.EAST
-      service.left()
+      service.turnLeft()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.NORTH)
     })
@@ -188,7 +188,7 @@ describe('Robot Service', () => {
     test('robot should face EAST after command if robot was facing SOUTH before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.SOUTH
-      service.left()
+      service.turnLeft()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.EAST)
     })
@@ -196,7 +196,7 @@ describe('Robot Service', () => {
     test('robot should face SOUTH after command if robot was facing WEST before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.WEST
-      service.left()
+      service.turnLeft()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.SOUTH)
     })
@@ -205,7 +205,7 @@ describe('Robot Service', () => {
   describe('Command: RIGHT', () => {
     test('should ignore move when robot not on table (play)' , () => {
       robot.coordinate = undefined
-      service.right()
+      service.turnRight()
       expect(robot.coordinate).toBeUndefined()    
       if (robot.direction)
         expect(robot.direction).toBe(robot.direction)    
@@ -216,7 +216,7 @@ describe('Robot Service', () => {
     test('robot should face EAST after command if robot was facing NORTH before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.NORTH
-      service.right()
+      service.turnRight()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.EAST)
     })
@@ -224,7 +224,7 @@ describe('Robot Service', () => {
     test('robot should face SOUTH after command if robot was facing EAST before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.EAST
-      service.right()
+      service.turnRight()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.SOUTH)
     })
@@ -232,7 +232,7 @@ describe('Robot Service', () => {
     test('robot should face WEST after command if robot was facing SOUTH before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.SOUTH
-      service.right()
+      service.turnRight()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.WEST)
     })
@@ -240,7 +240,7 @@ describe('Robot Service', () => {
     test('robot should face NORTH after command if robot was facing WEST before command' , () => {
       robot.coordinate = validCoordinate
       robot.direction = Direction.WEST
-      service.right()
+      service.turnRight()
       expect(robot.coordinate).toEqual(validCoordinate)    
       expect(robot.direction).toEqual(Direction.NORTH)
     })

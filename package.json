@@ -4,8 +4,8 @@
   "description": "This is a Toy Robot Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "tsnd --respawn src/index.ts",
-    "build": "tsc",
+    "start": "npm run build && npm run serve",
+    "build": "rm -rf dist/ && tsc",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "serve": "node dist/index.js"
@@ -21,6 +21,8 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "@types/readline-sync": "^1.4.3",
+    "dotenv": "^8.2.0",
+    "readline-sync": "^1.4.10"
   }
 }
