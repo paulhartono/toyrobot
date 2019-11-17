@@ -1,8 +1,7 @@
 import Coordinate from "../coordinate"
 import Table from "../table"
-import Rules from "."
+import Rules, { Direction } from "."
 import { Robot } from "../robot"
-import { Direction } from "./direction"
 
 let table: Table
 let rules: Rules

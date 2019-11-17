@@ -2,8 +2,9 @@ import 'dotenv/config';
 import RobotService, { Robot } from './robot';
 import Table from './table';
 import Rules from './rules';
-import readline from 'readline-sync'
+// import readline from 'readline-sync'
 import { handleCommand } from './command';
+import * as readline from 'readline'
 
 console.info('----------------------------------------------------------------')
 console.info('--                       toyrobot                             --')
@@ -41,18 +42,32 @@ try {
   // service.move()
   // console.log(service.report())
 
-  console.info('Accepting Command: [PLACE, MOVE, LEFT, RIGHT, REPORT, and quit]')
+  console.info('Please insert command below [PLACE, MOVE, LEFT, RIGHT, REPORT, or quit].')
 
-  let regex: RegExp = /^(PLACE|MOVE|LEFT|RIGHT|REPORT)(.*)$/;
-
-  readline.promptLoop(function(input) {
-
-    // console.log(`${JSON.stringify(service.robot)}`)
-
-    handleCommand(input.toUpperCase(), service)
-    return input.toLowerCase() === 'quit' || input.toLowerCase() === 'q';
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
   });
   
+  var recursiveAsyncReadLine = function () {
+    
+    rl.question('Command: ', function (input) {
+      if (input.toLowerCase() === 'quit' || input.toLowerCase() === 'q')  //we need some base case, for recursion
+        return rl.close(); //closing RL and returning from function.
+      
+      try {
+        handleCommand(input.toUpperCase(), service)
+      }
+      catch (e) {
+        console.error(e)
+      }
+
+      recursiveAsyncReadLine(); //Calling this function again to ask new question
+    });
+  };
+  
+  recursiveAsyncReadLine(); //we have to actually start our recursion somehow
+
 } catch (e) {
   console.error(e)
 }
